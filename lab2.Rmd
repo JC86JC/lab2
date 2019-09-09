@@ -41,14 +41,43 @@ senators <- fromJSON(paste(readLines(json_file), collapse = ""))
 
 Print the structure for the first senator, Lamar Alexander, in the list.
 
+```{r}
+str(senators$objects[[1]])
+```
+
+
 #### Task 2
 
 Extract the birthday for each North Carolina senator.
+
+```{r}
+for (i in 1:100) {
+  if (senators$objects[[i]]$state == 'NC') {
+    print(
+      paste('The birthday for senator',
+                senators$objects[[i]]$person$name,
+                'is',
+                senators$objects[[i]]$person$birthday ))
+  }
+}
+```
+
+
 
 #### Task 3
 
 Write a loop that prints the twitter ID for each senator in the leadership, i.e.
 where `leadership_title` is not null.
+
+```{r}
+for ( i in 1:100){
+  if(is.null(senators$objects[[i]]$leadership_title) == FALSE){
+    print(senators$objects[[i]]$person$twitterid)
+  }
+}
+```
+
+
 
 # Command line
 
